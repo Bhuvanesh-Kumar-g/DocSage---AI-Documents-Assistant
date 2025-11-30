@@ -5,3 +5,4 @@ google-generativeai
 pypdf2
 numpy
 scikit-learn
+gunicorn
