@@ -73,21 +73,4 @@ High-level flow:
 
 > Currently, the storage is in-memory. When the server restarts, the knowledge base is cleared.
 
-### (Optional) Mermaid Architecture Diagram
 
-You can include this in the README (GitHub will render it if Mermaid is enabled) or use it as a base to draw your own diagram:
-
-```mermaid
-graph TD
-    User[User / Browser] -->|Upload PDF/TXT| Frontend[HTML/CSS/JS UI]
-    Frontend -->|POST /upload (file)| Flask[Flask Backend]
-
-    Flask -->|Extract text| PDF[PyPDF2 / Text Parser]
-    PDF --> KB[In-memory Knowledge Base]
-
-    User -->|Ask Question| Frontend
-    Frontend -->|POST /ask (question)| Flask
-    Flask -->|Prompt with Document Text + Question| Gemini[Google Gemini API]
-    Gemini -->|Answer| Flask
-    Flask -->|JSON Response| Frontend
-    Frontend -->|Render Chat UI| User
