@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocSage - AI Document Assistant</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- App Container -->
+    <div id="app">
+        
+        <!-- Navbar -->
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-robot"></i> DocSage
+            </div>
+            <div class="tagline">Chat with your documents, instantly.</div>
+        </header>
+
+        <!-- VIEW 1: Landing / Upload -->
+        <section id="landing-view" class="view active">
+            <div class="hero-content">
+                <h1>Unlock the knowledge<br>inside your files.</h1>
+                <p class="subtitle">Upload a PDF or text file. I'll analyze it, and then we can chat.</p>
+                
+                <div class="upload-card">
+                    <div id="drop-area" class="drop-area">
+                        <i class="fa-solid fa-cloud-arrow-up icon-upload"></i>
+                        <p>Drag & Drop your file here</p>
+                        <span>or</span>
+                        <button id="browse-btn" class="btn-secondary">Browse Files</button>
+                        <input type="file" id="file-input" accept=".pdf, .txt" hidden>
+                    </div>
+                    
+                    <div id="file-info" class="file-info hidden">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <span id="filename-display">filename.pdf</span>
+                        <i class="fa-solid fa-xmark" id="remove-file-btn"></i>
+                    </div>
+
+                    <button id="upload-btn" class="btn-primary" disabled>
+                        <span>Analyze Document</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 2: Chat Interface -->
+        <section id="chat-view" class="view hidden">
+            <div class="chat-container">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="doc-badge">
+                        <i class="fa-regular fa-file-lines"></i>
+                        <span id="chat-doc-name">Document.pdf</span>
+                    </div>
+                    <button id="new-chat-btn" class="btn-icon" title="Upload new file">
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                    </button>
+                </div>
+
+                <!-- Messages Area -->
+                <div id="chat-history" class="chat-history">
+                    <!-- Intro Message -->
+                    <div class="message bot-message">
+                        <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                        <div class="message-content">
+                            I've finished reading your document. What would you like to know?
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-area-wrapper">
+                    <div class="input-area">
+                        <textarea id="user-input" rows="1" placeholder="Ask a question about your document..."></textarea>
+                        <button id="send-btn" disabled>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="footer-text">DocSage can make mistakes. Check important info.</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
